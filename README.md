@@ -1,8 +1,9 @@
 # allevios.io Open Source IoT Platform - Server
+This software is currently under heavy development. Not recommended for productive use.
 
 ## Requirements
 
-* Node.js
+* Node.js (v4.5.0 LTS)
 * MongoDB
 
 ## Features

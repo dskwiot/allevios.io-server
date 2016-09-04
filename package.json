@@ -9,6 +9,9 @@
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
+  "engines": {
+    "node": ">= 4.5.0"
+  },
   "dependencies": {
     "async": "^2.0.0-rc.2",
     "body-parser": "^1.15.0",
@@ -43,7 +46,6 @@
     "loopback-connector-mongodb": "^1.13.3",
     "loopback-datasource-juggler": "^2.45.2",
     "loopback-explorer": "^2.0.2",
-    "mariasql": "^0.2.5",
     "method-override": "^2.3.5",
     "mongoose": "^4.4.10",
     "morgan": "^1.7.0",
