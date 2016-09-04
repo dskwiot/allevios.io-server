@@ -1,0 +1,9 @@
+language: node_js
+notifications:
+      slack:
+node_js:
+  - '0.12'
+before_script:
+  - npm install -g bower grunt-cli
+  - bower install
+services: mongodb

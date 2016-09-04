@@ -1,0 +1,51 @@
+    <div class="row">
+
+  <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+    <div class="card" ng-click="add()">
+            <div class="header">
+              <h4 class="title">{{ 'ASSISTANT.Workflow' | translate }}</h4>
+            </div>
+            <div class="content">
+                <div class="footer">
+                    <div class="stats">
+                        <i class="ionicons ion-network"></i>
+                        <span>{{ 'WORKFLOW.PresenceSimulation' | translate }} | {{ 'WORKFLOW.CustomWorkflow' | translate }} | {{ 'WORKFLOW.NodeRed' | translate }}</span>
+                    </div>
+                </div>
+            </div>
+    </div>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-lg-12">
+
+
+
+  </div>
+</div>
+
+
+
+<div class="row">
+
+  <div class="col-md-3 col-lg-2 col-xs-12 col-sm-6" ng-repeat="i in workflows">
+    <div class="card" ng-click="edit(i)">
+            <div class="header">
+              <h4 class="title">{{ i.name }}</h4>
+              <p>{{ i.info }}</p>
+            </div>
+            <div class="content">
+              <div ng-click="$event.stopPropagation()">
+                <ul class="list-inline-btn">
+                  <li><button class="btn btn-fill btn-danger" ng-click="delete(i)"><i class="glyphicon glyphicon-trash"></i> {{ 'WORD.Delete' | translate }}</button></li>
+                <li ng-if="i.workflowtype == '1'"><button class="btn btn-fill btn-info" ng-click="designer(i)"><i class="glyphicon glyphicon-time"></i> {{ 'WORD.Timetable' | translate }}</button></li>
+                <li ng-if="i.workflowtype == '2'"><button class="btn btn-fill btn-info" ng-click="designer(i)"><i class="glyphicon glyphicon-edit"></i> {{ 'WORD.Designer' | translate }}</button></li>
+                <li ng-if="i.workflowtype == '3'"><button class="btn btn-fill btn-info" ng-click="designer(i)"><i class="glyphicon glyphicon-edit"></i> {{ 'WORD.Designer' | translate }}</button></li>
+                </ul>
+             </div>
+            </div>
+    </div></div>
+</div>
+
+

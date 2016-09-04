@@ -1,0 +1,54 @@
+<div id="login" class="row text-center">
+    <div class="col-lg-12" style="padding-top: 20px;">
+        <img class="logo" style="max-width: 150px;" src="assets/images/logo.png">
+    </div>
+    <div class="col-lg-12" style="padding-top: 20px;">
+        <div class="col-lg-12">
+            <form role="form" name="form" ng-submit="submit(form)" novalidate>
+
+                <div class="btn-group">
+                    <div class="inner-addon left-addon" style="border-style: none;">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <input class="form-control opaque" placeholder="{{ 'WORD.Email' | translate }}" name="email" type="email" ng-model="user.email" required>
+                    </div>
+                    <div class="inner-addon left-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <input type="password" class="form-control" name="password" type="password" value="" ng-model="user.password" placeholder="{{ 'WORD.Password' | translate }}" required>
+                    </div>
+                </div>
+                </br>
+                </br>
+
+                <div class="btn-group">
+                  <!--                    <a class='btn btn-fill btn-success'><i class="fa fa-chevron-right" style="width:16px; height:15px"></i></a> -->
+                    <a class='btn btn-fill btn-success' href="" ng-click="submit(form)" style="width:12em;"> {{ 'WORD.Login' | translate }} </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="col-lg-12" style="text-align:center; padding:1em">
+        <div class="btn-group">
+            <a class='btn btn-fill btn-danger disabled'><i class="fa fa-google-plus" style="width:16px; height:15px"></i></a>
+            <a class='btn btn-fill btn-danger' href='/auth/google' style="width:12em;"> {{ 'LOGIN.ConnectwithGoogle' | translate }}</a>
+        </div>
+        <div style="height: 5px;"></div>
+        <div class="btn-group">
+            <a class='btn btn-fill btn-primary disabled'><i class="fa fa-facebook" style="width:16px; height:15px"></i></a>
+            <a class='btn btn-fill btn-primary ' href='/auth/facebook' style="width:12em"> {{ 'LOGIN.ConnectwithFacebook' | translate }}</a>
+        </div>
+        <div style="height: 5px;"></div>
+        <div class="btn-group">
+            <a class='btn btn-fill btn-warning disabled'><i class="fa fa-twitter" style="width:16px; height:15px"></i></a>
+            <a class='btn btn-fill btn-warning ' href='/auth/twitter' style="width:12em"> {{ 'LOGIN.ConnectwithTwitter' | translate }}</a>
+        </div>
+        <br />
+
+    </div>
+
+    <div class="col-lg-12">
+        <p>{{ 'LOGIN.Forgotpassword' | translate }} <a href="" ng-click="showForgotPassword()">{{ 'WORD.clickhere' | translate }}</a>
+        </p>
+    </div>
+</div>

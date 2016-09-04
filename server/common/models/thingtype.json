@@ -1,0 +1,59 @@
+{
+  "name": "ThingType",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id" : "string",
+    "name": {
+      "type": "string"
+    },
+    "info": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },"cat_name": {
+      "type": "string"
+    },
+    "cat_info": {
+      "type": "string"
+    },
+    "cat_icon": {
+      "type": "string"
+    },
+    "cat_url": {
+      "type": "string"
+    }
+
+
+  },
+  "validations": [],
+  "relations": {
+    "datapoint": {
+      "type": "embedsMany",
+      "model": "Datapoint",
+      "property": "dptypes",
+      "options": {
+        "validate": true,
+        "forceId": true
+      }
+    },
+    "connection": {
+      "type": "embedsMany",
+      "model": "Connection",
+      "property": "connectionProp",
+      "options": {
+        "validate": true,
+        "forceId": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

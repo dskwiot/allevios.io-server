@@ -1,0 +1,16 @@
+<div class="widget4" ng-controller="GaugeCtrl">
+    <div id="gauge">
+        <p class="text-center value">{{value}}</p>
+        <canvas nggaugejs options="gaugeOptions" value="value" max-value="maxValue" animation-time="animationTime"></canvas>
+    </div>
+    <hr />
+
+    <div id="gauge">
+        <p class="text-center value">{{value}}</p>
+        <canvas nggaugejs gauge-type="gaugeType" options="donutGaugeOptions" value="value" max-value="maxValue" animation-time="animationTime"></canvas>
+    </div>
+
+
+    <label for="">Value</label>
+    <input type="number" ng-model="value" />
+</div>

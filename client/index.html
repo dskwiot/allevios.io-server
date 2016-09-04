@@ -1,0 +1,327 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" ng-app="alleviosServerApp">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- <base href="/"> -->
+    <title>{{ 'APP_MAIN' | translate}} {{ 'APP_SUBTITLE2' | translate }}</title>
+    <meta name="description" content="{{ 'APP_MAIN' | translate}} {{ 'APP_SUBTITLE2' | translate }}">
+    <meta name="author" content="Daniel Schlager">
+    <meta name="keywords" content="allevios,iot,things,eib,knx,robotics,home,automation">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
+
+    <link rel="stylesheet" href="app/account/login/login.css">
+
+    <link rel="stylesheet" href="components/css/tinycircleslider.css">
+    <link rel="stylesheet" href="components/css/tinycolorpicker.css">
+    <link rel="stylesheet" href="components/js/bootstrap-wysihtml5/bootstrap3-wysihtml5.css">
+    <link rel="stylesheet" href="components/js/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="components/js/morris/morris.css">
+    <link rel="stylesheet" href="components/modal/modal.css">
+    <link rel="stylesheet" href="components/social/social.css">
+    <link rel="stylesheet" href="components/touch/touch.css">
+    <link rel="stylesheet" href="components/widgets/colorpicker/colorpicker.css">
+    <link rel="stylesheet" href="components/widgets/gauge/gauge.css">
+    <link rel="stylesheet" href="components/widgets/slider/slider.css">
+    <link rel="stylesheet" href="components/widgets/switch/switch.css">
+    <link rel="stylesheet" href="components/widgets/text/text.css">
+
+    <!-- Bootstrap core CSS     -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="bower_components/bootstrap3-dialog/src/css/bootstrap-dialog.css" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet" />
+
+    <!--  Dashboard core CSS    -->
+    <link href="assets/css/dashboard.css" rel="stylesheet" />
+
+    <!--  Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bower_components/octicons/octicons/octicons.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/icomoon/dist/css/style.css" />
+    <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.css" />
+
+
+    <!-- Additional components -->
+    <link rel="stylesheet" href="components/css/leaflet.css" />
+
+    <!-- Angular -->
+    <link rel="stylesheet" href="bower_components/angular-ui-switch/angular-ui-switch.css" />
+    <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.css" />
+
+    <!-- Additional site stylesheets -->
+    <link rel="stylesheet" href="app/welcome/welcome.css" />
+
+</head>
+
+<body ng-controller="IndexCtrl">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!--<ng-include src="'components/navbar/navbar.html'" ng-show="isLoggedIn()">
+</ng-include>
+
+<div class="container-fluid">
+    <div class="row">
+        <ng-include src="'components/sidebar/sidebar.html'" ng-show="isLoggedIn()">
+        </ng-include>
+        <ng-include src="'components/sidebarright/sidebar.right.html'" ng-show="isLoggedIn()">
+        </ng-include>
+        <ui-view/>
+    </div>
+</div>
+
+<div class="footer" ng-hide="isLoggedIn()">
+    <div ng-include="'components/social/social.html'"></div>
+    <div ng-include="'components/footer/footer.html'"></div>
+</div>-->
+
+    <!--  <div class="wrapper" id="loginPanel" ng-hide="isLoggedIn()">
+        <ng-include src="'app/account/login/login.html'"></ng-include>
+    </div> -->
+
+    <ui-view></ui-view>
+
+
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <!--  Checkbox, Radio & Switch Plugins -->
+    <script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
+
+    <!--  Charts Plugin -->
+    <script src="assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/bootstrap-notify.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <!-- Dashboard Core javascript -->
+    <script src="assets/js/dashboard.js"></script>
+
+    <!--<script src="bower_components/bower-jvectormap/jquery-jvectormap-world-mill-en.js"></script> -->
+
+
+    <!-- build:js({client,node_modules}) app/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="bower_components/angular-ui-switch/angular-ui-switch.js"></script>
+    <script src="bower_components/angular-widget/angular-widget.js"></script>
+    <script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
+    <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+    <script src="bower_components/bootstrap-sidebar/dist/js/sidebar.js"></script>
+    <script src="bower_components/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="bower_components/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js"></script>
+    <script src="bower_components/bower-jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="bower_components/chartjs/Chart.js"></script>
+    <script src="bower_components/highcharts/highcharts.js"></script>
+    <script src="bower_components/highcharts/highcharts-more.js"></script>
+    <script src="bower_components/highcharts/modules/exporting.js"></script>
+    <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
+    <script src="bower_components/jquery-knob/js/jquery.knob.js"></script>
+    <script src="bower_components/jquery-sparkline/dist/jquery.sparkline.js"></script>
+    <script src="bower_components/jqueryui/jquery-ui.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js"></script>
+    <script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
+    <script src="bower_components/polymaps/polymaps.js"></script>
+    <script src="bower_components/respond/dest/respond.src.js"></script>
+    <script src="bower_components/jquery-touchswipe/jquery.touchSwipe.js"></script>
+    <script src="bower_components/slide-and-swipe-menu/jquery.slideandswipe.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-uuid4/angular-uuid4.js"></script>
+    <script src="bower_components/angular-dragdrop/src/angular-dragdrop.min.js"></script>
+    <script src="bower_components/ngDraggable/ngDraggable.js"></script>
+    <!-- endbower -->
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <!-- <script src="socket.io-client/socket.io.js"></script> -->
+    <!-- endbuild -->
+
+    <script src="components/js/bootstrap-checkbox-radio-switch.js"></script>
+    <script src="components/js/bootstrap-notify.js"></script>
+    <script src="components/js/bootstrap-select.js"></script>
+    <script src="components/js/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <script src="components/js/bootstrap-wysihtml5/bootstrap3-wysihtml5.js"></script>
+
+    <!-- <script src="bower_components/slimScroll/jquery.slimscroll.min.js"></script> -->
+
+    <!--    <script src="components/js/primus.js"></script> -->
+
+    <script src="bower_components/bower-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/index.controller.js"></script>
+
+    <!-- Components -->
+    <script src="components/services/lb-services.js"></script>
+    <script src="components/pubsub/pubsub.js"></script>
+    <script src="components/auth/auth.service.js"></script>
+    <script src="components/auth/user.service.js"></script>
+
+    <script src="app/welcome/welcome.controller.js"></script>
+    <script src="app/dashboard/dashboard.controller.js"></script>
+    <script src="app/main/main.controller.js"></script>
+    <script src="app/user/user.controller.js"></script>
+
+    <script src="app/admin/workflowdesigner/workflowdesigner.controller.js"></script>
+
+    <!-- Account -->
+    <script src="app/account/forgotpassword/forgotpassword.controller.js"></script>
+    <script src="app/account/forgotpassword/forgotpassword.modal.js"></script>
+    <script src="app/account/login/login.controller.js"></script>
+    <script src="app/account/login/login.modal.js"></script>
+    <script src="app/account/signup/signup.modal.js"></script>
+    <script src="app/account/signup/signup.controller.js"></script>
+    <script src="app/account/settings/settings.controller.js"></script>
+    <script src="app/account/userprofile/userprofile.controller.js"></script>
+    <script src="app/account/userprofile/userprofile.js"></script>
+    <script src="app/account/userprofile/userprofile.service.js"></script>
+
+    <!-- Admin -->
+    <script src="app/admin/admin.controller.js"></script>
+    <script src="app/admin/agent/agent.controller.js"></script>
+    <script src="app/admin/agent/agent.service.js"></script>
+    <script src="app/admin/assistant/assistant.controller.js"></script>
+    <script src="app/admin/client/client.controller.js"></script>
+    <script src="app/admin/client/client.service.js"></script>
+    <script src="app/admin/connection/connection.controller.js"></script>
+    <script src="app/admin/connection/connection.service.js"></script>
+    <script src="app/admin/datapoint/datapoint.controller.js"></script>
+    <script src="app/admin/datapoint/datapoint.service.js"></script>
+    <script src="app/admin/datapoint/datapointtype/datapointtype.service.js"></script>
+    <script src="app/admin/driver/driver.controller.js"></script>
+    <script src="app/admin/driver/driver.service.js"></script>
+    <script src="app/admin/project/project.controller.js"></script>
+    <script src="app/admin/project/project.service.js"></script>
+    <script src="app/admin/site/site.controller.js"></script>
+    <script src="app/admin/site/site.service.js"></script>
+    <script src="app/admin/systeminfo/systeminfo.controller.js"></script>
+    <script src="app/admin/systeminfo/systeminfo.service.js"></script>
+    <script src="app/admin/thing/thing.controller.js"></script>
+    <script src="app/admin/thing/thing.service.js"></script>
+    <script src="app/admin/thingtype/thingtype.service.js"></script>
+    <script src="app/admin/thingcategory/thingcategory.service.js"></script>
+    <script src="app/admin/usergroup/usergroup.service.js"></script>
+    <script src="app/admin/workflow/workflow.controller.js"></script>
+    <script src="app/admin/workflow/workflow.service.js"></script>
+
+
+    <script src="components/js/app.js"></script>
+    <!-- <script src="components/js/dashboard.js"></script>
+    <script src="components/js/dashboard_v2.js"></script> -->
+    <script src="components/js/gauge.min.js"></script>
+    <script src="components/js/jquery.tinycircleslider.js"></script>
+    <script src="components/js/leaflet.js"></script>
+    <script src="components/js/morris/morris.js"></script>
+    <script src="components/js/morris/morris.min.js"></script>
+    <script src="components/js/nns.min.js"></script>
+    <script src="components/js/primus.js"></script>
+    <script src="components/js/raphael.js"></script>
+
+    <script src="components/language/language.controller.js"></script>
+
+    <script src="components/modal/modal.service.js"></script>
+
+    <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+
+    <script src="components/navbar/navbar.controller.js"></script>
+    <script src="components/sidebar/sidebar.controller.js"></script>
+
+    <!--    <script src="components/sidebarright/sidebar.right.controller.js"></script>-->
+
+    <script src="components/socket/socket.service.js"></script>
+
+    <script src="components/widgets/gauge/gauge.controller.js"></script>
+    <script src="components/widgets/gauge/gauge.js"></script>
+
+    <!--        <script src="components/touch/touch.directive.js"></script>-->
+
+    <script src="components/widgets/colorpicker/colorpicker.controller.js"></script>
+
+    <script src="components/widgets/slider/slider.controller.js"></script>
+    <script src="components/widgets/switch/switch.controller.js"></script>
+    <script src="components/widgets/text/text.controller.js"></script>
+    <script src="components/widgets/text/text.js"></script>
+
+
+    <!-- endinjector -->
+    <!-- endbuild -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <!-- <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-XXXXX-X');
+        ga('send', 'pageview');
+    </script> -->
+
+</body>
+
+</html>

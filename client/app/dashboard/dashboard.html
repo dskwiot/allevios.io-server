@@ -1,0 +1,212 @@
+<ng-include src="'/app/admin/assistant/assistant.html'">
+
+</ng-include>
+
+<div class="row" ng-controller="AssistantCtrl" ng-hide="hasClients && hasProjects">
+    <div class="col-lg-12" ng-hide="hasClients">
+        <div class="small-box bg-red">
+            <div class="inner">
+                <span class="fa fa-info"></span><span ng-click="newClient()"> &nbsp; {{ 'ASSISTANT.NoClients' | translate }} {{ 'ASSISTANT.AddOne' | translate }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12" ng-hide="hasProjects">
+        <div class="small-box bg-red">
+            <div class="inner">
+                <span class="fa fa-info"></span><span ng-click="newProject()"> &nbsp; {{ 'ASSISTANT.NoProjects' | translate }} {{ 'ASSISTANT.AddOne' | translate }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card" ng-click="navigateTo('main.thing');">
+            <div class="header">
+                <h4 class="title">{{ 'WORD.Things' | translate }}</h4>
+                <p class="category"></p>
+            </div>
+            <div class="content">
+
+                <div class="footer">
+                    <div class="stats">
+                        <i class="fa fa-clock-o"></i> {{thingscount}} {{ 'WORD.Things' | translate }}
+                        <i class="fa fa-clock-o"></i> {{datapointcount}} {{ 'WORD.Datapoints' | translate }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" ng-click="navigateTo('main.users');">
+            <div class="header">
+                <h4 class="title">{{ 'WORD.Users' | translate }}</h4>
+                <p class="category"></p>
+            </div>
+            <div class="content">
+
+                <div class="footer">
+                    <div class="stats">
+                        <i class="fa fa-clock-o"></i> {{usercount}} {{ 'WORD.Users' | translate }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" ng-click="navigateTo('main.metrics');">
+            <div class="header">
+                <h4 class="title">{{ 'WORD.MetricsData' | translate }}</h4>
+                <p class="category"></p>
+            </div>
+            <div class="content">
+
+                <div class="footer">
+                    <div class="stats">
+                        <i class="fa fa-clock-o"></i> {{measurements}} GB
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">{{ 'DASHBOARD.WorldConnected' | translate }}</h4>
+            </div>
+            <div class="content">
+                <div>
+
+                    <div id="world-map" style="height: 250px; width: 100%;"></div>
+
+                </div>
+                <div class="footer">
+
+                    <hr>
+                    <div class="stats">
+                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                            <div id="sparkline-1"></div>
+                            <div class="knob-label">{{ 'WORD.Things' | translate }}</div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                            <div id="sparkline-2"></div>
+                            <div class="knob-label">{{ 'WORD.Shifts' | translate }}</div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-xs-4 text-center">
+                            <div id="sparkline-3"></div>
+                            <div class="knob-label">{{ 'WORD.EnergyConsumption' | translate }}</div>
+                        </div>
+                        <!-- ./col -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">{{ 'DASHBOARD.SocialInfluence' | translate }}</h4>
+            </div>
+            <div class="content">
+                <div>
+
+                    <div class="chart" id="sentiment" style="height: 250px;"></div>
+
+                </div>
+                <div class="footer">
+
+                    <hr>
+                    <div class="stats">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">{{ 'WORD.CO2Footprint' | translate }}</h4>
+            </div>
+            <div class="content">
+                <div>
+
+                    <div class="chart" id="line-chart" style="height: 250px;"></div>
+
+                </div>
+                <div class="footer">
+
+                    <hr>
+                    <div class="stats">
+                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                            <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC" />
+                            <div class="knob-label">{{ 'WORD.CO2kg' | translate }}</div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                            <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC" />
+                            <div class="knob-label">{{ 'WORD.SavedTrees' | translate }}</div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-xs-4 text-center">
+                            <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC" />
+                            <div class="knob-label">{{ 'WORD.SavedMoney' | translate }}</div>
+                        </div>
+                        <!-- ./col -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">{{ 'DASHBOARD.Chat' | translate }}</h4>
+
+            </div>
+            <div class="content">
+                <div>
+
+                    <img src="assets/img/daniel-128x128.jpg" alt="user image" class="online" />
+                    <p class="message">
+                        <a href="#" class="name">
+                            <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small> Daniel Schlager
+                        </a>
+                        Hello John. Thank you very much for using ALLEVIOS. Attached the Manual. Kind regards, Daniel.
+                    </p>
+                    <div class="attachment">
+                        <h4>{{ 'WORD.Attachments' | translate }}:</h4>
+                        <p class="filename">
+                            Allevios_Manual_2015.pdf
+                        </p>
+                        <div class="pull-right">
+                            <button class="btn btn-primary btn-sm btn-flat">{{ 'WORD.Open' | translate }}</button>
+                        </div>
+                    </div>
+                    <!-- /.attachment -->
+                </div>
+                <div class="footer">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="{{ 'DASHBOARD.TypeMessage' | translate }}" />
+                        <div class="input-group-btn">
+                            <button class="btn btn-success"><i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="stats">
+                        Status: <span class="fa fa-square text-green"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="main col-md-10 col-md-offset-2">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li>
+                {{ 'WORD.Management' | translate }}
+            </li>
+            <li class="active">{{ 'WORD.Systeminfo' | translate }}</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="page-header">{{ 'WORD.Systeminfo' | translate }}</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <p>Name: {{ systeminfo.name }} </p>
+            <p>Version: {{ systeminfo.version }} </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4> {{ 'SYSTEMINFO.ActiveModules' | translate }}</h4>
+        </div>
+        <div class="col-lg-12">
+            <ul>
+                <li>db</li>
+                <li>devicehub</li>
+            </ul>
+        </div>
+    </div>
+
+</div>

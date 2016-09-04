@@ -1,0 +1,174 @@
+<ng-include src="'/app/admin/assistant/assistant.html'">
+
+</ng-include>
+
+<script type="text/ng-template" id="customTemplate.html">
+    <a>
+        <span bind-html-unsafe="match.model.name | typeaheadHighlight:query"></span>
+    </a>
+</script>
+
+<div class="main col-md-10 col-md-offset-2">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li>
+                {{ 'WORD.Management' | translate }}
+            </li>
+            <li class="active">{{ 'WORD.Users' | translate }}</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-sm-3 col-xs-3">
+            <h1 class="page-header">{{ 'WORD.Users' | translate }}</h1>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-9">
+            <h2>
+            <input class="pull-right" type="text" ng-model="filter" placeholder="{{ 'WORD.Filter' | translate }}" typeahead="type as type.name for type in users | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control">
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-click="add()">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3 class="light">{{ 'WORD.Users' | translate }}</h3>
+                    <p>{{ 'WORD.Add' | translate }}</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-user-plus"></i>
+                </div>
+
+                <div class="inner">
+                    <span> </span>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-repeat="i in users" ng-click="edit(i)">
+            <div class="small-box bg-blue">
+                <div class="inner">
+                    <h3 class="light">{{i.name}}</h3>
+                    <p>{{ i.email }}</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="inner" ng-click="$event.stopPropagation()">
+                    <button class="btn-group btn btn-danger" ng-click="delete(i)"><i class="glyphicon glyphicon-trash"></i> {{ 'WORD.Delete' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-show="isEdit || isNew">
+        <div class="col-lg-12">
+            <h1 ng-show="isEdit">{{ 'WORD.Edit' | translate }}</h1>
+            <h1 ng-show="isNew">{{ 'WORD.New' | translate }} </h1>
+            <form class="form-horizontal" role="form" name="form" ng-submit="save(form)" novalidate="" id="form">
+                <input type="hidden" name="id" ng-model="form.id">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="InputName">Name</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="InputName" ng-model="form.name" placeholder="{{ 'ADMIN.NameOfUser' | translate }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="InputPassword">{{ 'WORD.Password' | translate }}</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="InputPassword" ng-model="form.password" placeholder="{{ 'WORD.Password' | translate }}">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="InputEmail">{{ 'WORD.Email' | translate }} </label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="InputEmail" ng-model="form.email" placeholder="{{ 'WORD.Email' | translate }}">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="InputRole">{{ 'ADMIN.Role' | translate }}</label>
+
+                    <div class="col-sm-10">
+                        <select class="form-control" id="InputRole" ng-model="form.role">
+                            <option ng-repeat="role in roles" value="{{role._id}}">
+                                {{role.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="InputGroups">{{ 'ADMIN.Groups' | translate }} </label>
+                    <div class="col-sm-2" ng-repeat="group in groups">
+                        <div class="checkbox">
+                            <input id="{{group._id}}" value="{{group._id}}" ng-checked="groupsselection.indexOf(group._id) != -1" ng-click="toggleGroupSelection(group._id)" type="checkbox" /> {{ group.name }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="InputClients">{{ 'WORD.Clients' | translate }}</label>
+
+                    <div class="col-sm-2" ng-repeat="client in clients">
+                        <div class="checkbox">
+                            <input id="{{client._id}}" value="{{client._id}}" ng-checked="clientsselection.indexOf(client._id) != -1" ng-click="toggleClientSelection(client._id)" type="checkbox" /> {{ client.name }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="InputSite">{{ 'WORD.Site' | translate }}</label>
+
+                    <div class="col-sm-10">
+                        <select class="form-control" id="InputSite" ng-model="form.site">
+                            <option ng-repeat="site in sites" value="{{site._id}}">
+                                {{site.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="InputDefaultLanguage">{{ 'ADMIN.DefaultLanguage' | translate }}</label>
+
+                    <div class="col-sm-10">
+                        <select class="form-control" id="InputDefaultLanguage" ng-model="form.defaultlanguage">
+                            <option ng-repeat="lang in languages" value="{{lang._id}}">
+                                {{lang.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="InputActive">{{ 'WORD.Active' | translate }}</label>
+
+                    <div class="col-sm-10">
+                        <div class="checkbox">
+                            <input ng-model="form.active" id="InputActive" type="checkbox">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-default">{{ 'WORD.Save' | translate }}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>

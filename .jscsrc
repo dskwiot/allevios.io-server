@@ -1,0 +1,7 @@
+{
+  "preset": "google",
+    "esnext": true,
+    "requireSpaceAfterComma": true,
+    "requireTrailingComma": true,
+    "maximumLineLength": 120
+}

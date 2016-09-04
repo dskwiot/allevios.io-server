@@ -1,0 +1,30 @@
+{
+  "name": "Datapoint",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id" : "string",
+    "name" : "string",
+    "info" : "string",
+    "cmd" :  "array",
+    "io" : "string",
+    "model" : "string"
+  },
+  "validations": [],
+  "relations": {
+    "driver": {
+      "type": "embedsOne",
+      "model": "Driver",
+      "property": "driver",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

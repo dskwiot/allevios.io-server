@@ -1,0 +1,26 @@
+<ng-include src="'/app/admin/assistant/assistant.html'">
+
+</ng-include>
+
+<div class="wrapper" id="mainPanel">
+
+    <ng-include src="'components/sidebar/sidebar.html'"></ng-include>
+
+    <div class="main-panel">
+
+        <ng-include src="'components/navbar/navbar.html'">
+        </ng-include>
+
+        <div class="content">
+            <div class="container-fluid">
+
+                <ui-view></ui-view>
+
+
+            </div>
+        </div>
+
+        <ng-include src="'components/footer/footer.html'"></ng-include>
+
+    </div>
+</div>

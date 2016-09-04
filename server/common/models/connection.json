@@ -1,0 +1,36 @@
+{
+"name": "Connection",
+"base": "PersistedModel",
+"idInjection": true,
+"options": {
+"validateUpsert": true
+},
+"properties": {
+  "id" : "string",
+  "name" : "string",
+  "info" : "string",
+  "adaptor" : "string",
+  "uuid" : "string",
+  "mod" : "string",
+  "host" : "string",
+  "port" : "string",
+  "username" : "string",
+  "password" : "string",
+  "fallbackId" : "number",
+  "useAgent" : "boolean"
+},
+"validations": [],
+"relations": {
+   "agent": {
+      "type": "embedsOne",
+      "model": "Agent",
+      "property": "agent",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+},
+"acls": [],
+"methods": {}
+}

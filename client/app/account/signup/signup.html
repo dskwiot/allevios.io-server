@@ -1,0 +1,114 @@
+<div id="login" class="row text-center">
+    <div class="col-lg-12" style="padding-top: 20px;">
+        <img class="logo" style="max-width: 150px;" src="assets/images/logo.png">
+    </div>
+    <div class="col-lg-12" style="padding-top: 20px;">
+        <div class="col-lg-12">
+            <form role="form" name="form" ng-submit="submit(form)" novalidate>
+
+                <div class="btn-group">
+                    <div class="inner-addon left-addon" style="border-style: none;">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <input class="form-control opaque" placeholder="Name" name="name" type="name" ng-model="user.name" required>
+                    </div>
+                    <div class="inner-addon left-addon" style="border-style: none;">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <input class="form-control opaque" placeholder="{{ 'WORD.Email' | translate }}" name="email" type="email" ng-model="user.email" required>
+                    </div>
+                    <div class="inner-addon left-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <input type="password" class="form-control" name="password" type="password" value="" ng-model="user.password" placeholder="{{ 'WORD.Password' | translate }}" required>
+                    </div>
+                    <div class="inner-addon left-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <input type="password" class="form-control" name="password" type="password" value="" ng-model="user.passwordconfirm" placeholder="{{ 'WORD.PasswordConfirm' | translate }}" required>
+                    </div>
+
+                </div>
+                </br>
+                </br>
+
+                <div class="btn-group">
+                  <!--                    <a class='btn btn-fill btn-success disabled'><i class="fa fa-chevron-right" style="width:16px; height:15px"></i></a> -->
+                    <a class='btn btn-fill btn-success' href="" ng-click="submit(form)" style="width:12em;"> {{ 'WORD.Signup' | translate }} </a>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-lg-4">
+
+        </div>
+    </div>
+
+    <div class="col-lg-12" style="text-align:center; padding:1em">
+        <div class="btn-group">
+            <a class='btn btn-fill btn-danger disabled'><i class="fa fa-google-plus" style="width:16px; height:15px"></i></a>
+            <a class='btn btn-fill btn-danger' href='/auth/google' style="width:12em;"> Sign up with Google</a>
+        </div>
+        <div style="height: 5px;"></div>
+        <div class="btn-group">
+            <a class='btn btn-fill btn-primary disabled'><i class="fa fa-facebook" style="width:16px; height:15px"></i></a>
+            <a class='btn btn-fill btn-primary ' href='/auth/facebook' style="width:12em"> Sign up with Facebook</a>
+        </div>
+        <div style="height: 5px;"></div>
+        <div class="btn-group">
+            <a class='btn btn-fill btn-danger disabled'><i class="fa fa-twitter" style="width:16px; height:15px"></i></a>
+            <a class='btn btn-fill btn-danger ' href='/auth/twitter' style="width:12em"> Sign up with Twitter</a>
+        </div>
+
+        <br />
+
+    </div>
+
+    <div class="col-lg-12">
+        <p>{{ 'SIGNUP.HaveAccount' | translate }} <a href="" ng-click="showLogin()">{{ 'WORD.clickhere' | translate }}</a>
+        </p>
+    </div>
+</div>
+
+
+
+<!--
+
+
+<div class="text-center">
+    <img class="logo" src="assets/images/logo_allevios.png">
+    <div style="padding-top: 30px;" class="logo">{{ 'WORD.Signup' | translate }}</div>
+    <div class="login-form-1">
+        <form role="form" name="form" ng-submit="register(form)" novalidate>
+            <div class="login-form-main-message"></div>
+            <div class="main-login-form">
+                <div class="login-group">
+                    <div class="form-group">
+                        <label for="reg_fullname" class="sr-only">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" ng-model="user.name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_username" class="sr-only">{{ 'WORD.Email' | translate }}</label>
+                        <input type="email" name="email" class="form-control" placeholder="{{ 'WORD.Email' | translate }}" ng-model="user.email" required mongoose-error/>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_password" class="sr-only">{{ 'WORD.Password' | translate }}</label>
+                        <input type="password" name="password" class="form-control" placeholder="{{ 'WORD.Password' | translate }}" ng-model="user.password" ng-minlength="5" required mongoose-error/>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_password_confirm" class="sr-only">{{ 'WORD.PasswordConfirm' | translate }}</label>
+                        <input type="password" name="passwordconfirm" class="form-control" placeholder="{{ 'WORD.PasswordConfirm' | translate }}" ng-model="user.passwordconfirm" ng-minlength="5" required mongoose-error/>
+                    </div>
+                    <div class="form-group login-group-checkbox">
+                        <input type="checkbox" class="" id="reg_agree" name="reg_agree">
+                        <label for="reg_agree"><a href="#">{{ 'SIGNUP.Terms' | translate }}</a>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="etc-login-form">
+                <p>{{ 'SIGNUP.HaveAccount' | translate }} <a href="/#/login">{{ 'WORD.clickhere' | translate }}</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+ -->

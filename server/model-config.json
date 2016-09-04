@@ -1,0 +1,81 @@
+{
+  "_meta": {
+    "sources": [
+      "./common/models",
+      "./models",
+      "./node_modules/loopback-component-passport/lib/models"
+    ]
+  },
+  "user": {
+    "dataSource": "AlleviosServer",
+    "public": true
+  },
+  "accessToken": {
+    "dataSource": "AlleviosServer",
+    "public": false
+  },
+  "userCredential": {
+    "dataSource": "AlleviosServer",
+    "public": false
+  },
+  "userIdentity": {
+    "dataSource": "AlleviosServer",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "AlleviosServer",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "AlleviosServer",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "AlleviosServer",
+    "public": false
+  },
+  "ThingCategory": {
+    "dataSource": "AlleviosServer",
+    "public": true
+  },
+  "ThingType": {
+    "dataSource": "AlleviosServer",
+    "public": true
+  },
+  "Thing": {
+    "dataSource": "AlleviosServer",
+    "public": true
+  },
+  "Driver": {
+    "dataSource": "AlleviosServer",
+    "public": true
+  },
+  "Site": {
+    "dataSource": "AlleviosServer",
+    "public": true
+  },
+  "Datapoint": {
+    "dataSource": "AlleviosServer",
+    "public": true
+  },
+  "Connection": {
+    "dataSource": "AlleviosServer",
+    "public": true
+  },
+  "Agent": {
+    "dataSource": "AlleviosServer",
+    "public": true
+  },
+  "Client": {
+    "dataSource": "AlleviosServer",
+    "public": true
+  },
+  "Project": {
+    "dataSource": "AlleviosServer",
+    "public": true
+  },
+  "Workflow": {
+    "dataSource": "AlleviosServer",
+    "public": true
+  }
+}

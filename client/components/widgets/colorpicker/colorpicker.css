@@ -1,0 +1,54 @@
+/*
+ * Copyright 2015 Daniel Schlager <email@danielschlager.at> & Christian Kawalar <christian@kawalar.net>
+ *
+ * All Rights Reserved.
+ *
+ * This software is the confidential and proprietary information of
+ * Daniel Schlager & Christian Kawalar ("Confidential Information").  You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Daniel Schlager & Christian Kawalar.
+ *
+ * CopyrightVersion 1.0
+ */
+
+.farbtastic {
+    position: relative;
+}
+
+.farbtastic * {
+    position: absolute;
+    cursor: crosshair;
+}
+
+.farbtastic,
+.farbtastic .wheel {
+    width: 195px;
+    height: 195px;
+}
+
+.farbtastic .color,
+.farbtastic .overlay {
+    top: 47px;
+    left: 47px;
+    width: 101px;
+    height: 101px;
+}
+
+.farbtastic .wheel {
+    background: url(wheel.png) no-repeat;
+    width: 195px;
+    height: 195px;
+}
+
+.farbtastic .overlay {
+    background: url(mask.png) no-repeat;
+}
+
+.farbtastic .marker {
+    width: 17px;
+    height: 17px;
+    margin: -8px 0 0 -8px;
+    overflow: hidden;
+    background: url(marker.png) no-repeat;
+}

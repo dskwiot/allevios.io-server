@@ -1,0 +1,920 @@
+<!-- USER MODAL TEMPLATE -->
+<script type="text/ng-template" id="newUserModalTemplate.html">
+
+    <form class="form-horizontal" role="form" name="form" ng-submit="ok(form)" id="form">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ 'WORD.Users' | translate }}</h3>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+
+                </div>
+
+                <div class="col-lg-12">
+
+                    <input type="hidden" name="id" ng-model="form.id">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputName">Name</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputName" ng-model="form.name" placeholder="{{ 'ADMIN.NameOfUser' | translate }}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputPassword">{{ 'WORD.Password' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputPassword" ng-model="form.password" placeholder="{{ 'WORD.Password' | translate }}" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputEmail">{{ 'WORD.Email' | translate }} </label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputEmail" ng-model="form.email" placeholder="{{ 'WORD.Email' | translate }}" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputRole">{{ 'ADMIN.Role' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="InputRole" ng-model="form.role">
+                                <option ng-repeat="role in roles" value="{{role.id}}" required>
+                                    {{role.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputGroups">{{ 'ADMIN.Groups' | translate }} </label>
+                        <div class="col-sm-2" ng-repeat="group in groups">
+                            <div class="checkbox">
+                                <input id="{{group.id}}" value="{{group.id}}" ng-checked="groupsselection.indexOf(group.id) != -1" ng-click="toggleGroupSelection(group.id)" type="checkbox" required/> {{ group.name }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputClients">{{ 'WORD.Clients' | translate }}</label>
+
+                        <div class="col-sm-2" ng-repeat="client in clients">
+                            <div class="checkbox">
+                                <input id="{{client.id}}" value="{{client.id}}" ng-checked="clientsselection.indexOf(client.id) != -1" ng-click="toggleClientSelection(client.id)" type="checkbox" /> {{ client.name }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputSite">{{ 'WORD.Site' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="InputSite" ng-model="form.site">
+                                <option ng-repeat="site in sites" value="{{site.id}}">
+                                    {{site.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputDefaultLanguage">{{ 'ADMIN.DefaultLanguage' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="InputDefaultLanguage" ng-model="form.defaultlanguage">
+                                <option ng-repeat="lang in languages" value="{{lang.id}}">
+                                    {{lang.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputActive">{{ 'WORD.Active' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <div class="checkbox">
+                                <input ng-model="form.active" id="InputActive" type="checkbox">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-fill btn-success" type="submit">OK</button>
+            <button class="btn btn-fill btn-danger" ng-click="cancel()">{{ 'WORD.Cancel' | translate }}</button>
+        </div>
+    </form>
+</script>
+
+<!-- USERPROFILE MODAL TEMPLATE -->
+<script type="text/ng-template" id="newUserProfileModalTemplate.html">
+
+    <form class="form-horizontal" role="form" name="form" ng-submit="ok(form)" id="form">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ 'WORD.Users' | translate }}</h3>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+
+                </div>
+
+                <div class="col-lg-12">
+
+                    <input type="hidden" name="id" ng-model="form.id">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputTitle">{{ 'USERPROFILE.Title' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="InputTitle" ng-model="form.title">
+                                <option ng-repeat="title in titles" value="{{title.id}}" required>
+                                    {{title.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputFirstname">{{ 'USERPROFILE.FirstName' | translate }} </label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputFirstname" ng-model="form.firstname" placeholder="{{ 'USERPROFILE.FirstName' | translate }}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputMiddlename">{{ 'USERPROFILE.MiddleName' | translate }} </label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputMiddlename" ng-model="form.middlename" placeholder="{{ 'USERPROFILE.MiddleName' | translate }}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputLastname">{{ 'USERPROFILE.LastName' | translate }} </label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputLastname" ng-model="form.lastname" placeholder="{{ 'USERPROFILE.LastName' | translate }}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputSex">{{ 'USERPROFILE.Sex' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="InputSex" ng-model="form.sex">
+                                <option value="female">
+                                    female
+                                </option>
+                                <option value="male">
+                                    male
+                                </option>
+                                <option value="others">
+                                    others
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputBirthdate">{{ 'USERPROFILE.Birthdate' | translate }} </label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputBirthdate" ng-model="form.birthdate" placeholder="{{ 'USERPROFILE.Birthdate' | translate }}">
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-fill btn-success" type="submit">OK</button>
+            <button class="btn btn-fill btn-danger" ng-click="cancel()">{{ 'WORD.Cancel' | translate }}</button>
+        </div>
+    </form>
+</script>
+
+<!-- PROJECT MODAL TEMPLATE -->
+<script type="text/ng-template" id="newProjectModalTemplate.html">
+
+    <form class="form-horizontal" role="form" name="form" ng-submit="ok(form)" id="form">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ 'ASSISTANT.Project' | translate }}</h3>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <p>
+                        <p>A project can contain any number of things. </p>
+                        <p>We will now guide you through the first steps</p>
+                        <p>After you fill in a name, a short description and a target client you can continue to sensors and actuators.
+                        </p>
+                        <p>Go on, fill this in and let‘s move on to the next step!</p>
+
+                </div>
+
+                <div class="col-lg-12">
+
+                    <input type="hidden" name="id" ng-model="form.id">
+                    <input type="hidden" name="isEdit" ng-model="form.isEdit">
+
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputName">Name</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputName" ng-model="form.name" placeholder="{{ 'PROJECT.NameofProject' | translate }}" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputInfo">Info</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputInfo" ng-model="form.info" placeholder="Info">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputClient">{{ 'WORD.Client' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="InputClient" ng-model="form.client">
+                                <option ng-repeat="client in clients" value="{{client.id}}" required>
+                                    {{client.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputActive">{{ 'WORD.Active' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <div class="checkbox">
+                                <input ng-model="form.active" id="InputActive" type="checkbox">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-fill btn-success" type="submit">OK</button>
+            <button class="btn btn-fill btn-danger" ng-click="cancel()">{{ 'WORD.Cancel' | translate }}</button>
+        </div>
+    </form>
+</script>
+
+<!-- CLIENT MODAL TEMPLATE -->
+<script type="text/ng-template" id="newClientModalTemplate.html">
+    <form class="form-horizontal" role="form" name="form" ng-submit="ok(form)" id="form">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ 'ASSISTANT.Client' | translate }}</h3>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                </div>
+
+                <div class="col-lg-12">
+
+                    <input type="hidden" name="id" ng-model="form.id">
+                    <input type="hidden" name="isEdit" ng-model="form.isEdit">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputName">Name</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputName" ng-model="form.name" placeholder="{{ 'CLIENT.NameofClient' | translate }}" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputInfo">Info</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputInfo" ng-model="form.info" placeholder="Info">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputActive">{{ 'WORD.Active' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <div class="checkbox">
+                                <input ng-model="form.active" id="InputActive" type="checkbox">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-fill btn-success" type="submit">OK</button>
+            <button class="btn btn-fill btn-danger" type="button" ng-click="cancel()">{{ 'WORD.Cancel' | translate }}</button>
+        </div>
+    </form>
+</script>
+
+<!-- SITE MODAL TEMPLATE -->
+<script type="text/ng-template" id="newSiteModalTemplate.html">
+    <form class="form-horizontal" role="form" name="form" ng-submit="ok(form)" id="form">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ 'ASSISTANT.Site' | translate }}</h3>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                </div>
+
+                <div class="col-lg-12">
+                    <input type="hidden" name="id" ng-model="form.id">
+                    <input type="hidden" name="isEdit" ng-model="form.isEdit">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputSiteType">{{ 'WORD.SiteType' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="InputSiteType" ng-model="form.sitetype">
+                                <option ng-repeat="type in sitetypes" value="{{type.id}}">
+                                    {{type.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputName">Name</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputName" ng-model="form.name" placeholder="{{ 'SITE.NameofSite' | translate }}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputInfo">Info</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputInfo" ng-model="form.info" placeholder="{{ 'SITE.SitesInfo' | translate }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="sitemap"></label>
+                        <div class="col-sm-10">
+                            <div id="sitemap" style="height: 250px; width: 100%; "></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputGeoloc">{{ 'SITE.Geolocation' | translate }}</label>
+
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="InputGeoloc" ng-model="form.geoloc" placeholder="{{ 'SITE.Geolocation' | translate }}">
+                        </div>
+
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputBlueprint">{{ 'SITE.Blueprint' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputBlueprint" ng-model="form.blueprint" placeholder="{{ 'SITE.Blueprint' | translate }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputFloor">{{ 'SITE.BlueprintMarker' | translate }}</label>
+
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="InputFloor" ng-model="form.blueprintmarkerx" placeholder="{{ 'SITE.BlueprintX' | translate }}">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="InputFloor" ng-model="form.blueprintmarkery" placeholder="{{ 'SITE.BlueprintY' | translate }}">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="InputFloor" ng-model="form.blueprintmarkerz" placeholder="{{ 'SITE.BlueprintZ' | translate }}">
+                        </div>
+                    </div>
+-->
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-fill btn-success" type="submit">OK</button>
+            <button class="btn btn-fill btn-danger" type="button" ng-click="cancel()">{{ 'WORD.Cancel' | translate }}</button>
+        </div>
+    </form>
+</script>
+
+<!-- THING MODAL TEMPLATE -->
+<script type="text/ng-template" id="newThingModalTemplate.html">
+    <form class="form-horizontal" role="form" name="form" ng-submit="ok(form)" id="form">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ 'ASSISTANT.Thing' | translate }}</h3>
+        </div>
+        <div class="modal-body">
+
+<div class="row">
+<div class="btn-group btn-group-justified" role="group">
+<a class="btn btn-fill btn-default" href="" role="button" ng-click="showCategorySelection()" ng-class="{ active: isCategorySelector }">
+1. {{ 'WORD.Category' | translate }}
+<br/>
+<br/>
+<i class="fa fa-building-o" style="font-size: 0.8em;"></i>
+<i class="mega-octicon octicon-hubot" style="font-size: 0.8em;"></i>
+<i class="fa fa-heartbeat" style="font-size: 0.8em;"></i>
+</a>
+<a class="btn btn-fill btn-default" href="" role="button" ng-click="showThingTypeSelection()" ng-class="{ active: isThingTypeSelector }">
+2. {{ 'WORD.ThingType' | translate }}
+<br/>
+<br/>
+<i class="fa fa-lightbulb-o" style="font-size: 0.8em;"></i>
+<i class="fa fa-toggle-off" style="font-size: 0.8em;"></i>
+</a>
+<a class="btn btn-fill btn-default" href="" role="button" ng-click="showEditThing()" ng-class="{ active: isEditThing }">
+3. {{ 'WORD.EditThing' | translate }}
+<br/>
+<br/>
+<i class="fa fa-pencil-square-o" style="font-size: 0.8em;"></i>
+</a>
+</div>
+            <div class="row" ng-show="isCategorySelector" style="padding-top: 15px;">
+                    <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12" ng-repeat="category in thingcategories">
+                        <div class="info-box" ng-click="selectCategory(category)" id="{{ category.id }}">
+                            <span class="info-box-icon bg-orange" ng-class="{ active: isSelectedCategory(category)}"><i class="{{ category.icon }}"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">{{ category.name }}</span>
+                                <span class="info-box-number hidden-md hidden-xs"> {{ category.info }}</span>
+                                <span class="info-box-text"><a href="{{ category.url }}" target="_blank">{{ 'WORD.MoreInfo' | translate }}</a></span>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="row" ng-show="isThingTypeSelector" style="padding-top: 15px;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-repeat="type in thingtypes">
+                        <div class="info-box" ng-click="selectType(type)" id="{{ type.id }}">
+                            <span class="info-box-icon bg-gray" ng-class="{ active: isSelectedType(type)}"><img class="overlay" width="80" height="70" src="/assets/icons/{{ type.icon }}_600x600.png"></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">{{ type.name }}</span>
+                                <span class="info-box-number"> {{ type.info }}</span>
+                                <span class="info-box-text"><a href="{{ type.url }}" target="_blank">{{ 'WORD.MoreInfo' | translate }}</a></span>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="row" ng-show="isEditThing" style="padding-top: 15px;">
+                <div class="col-lg-12">
+                    <input type="hidden" name="id" ng-model="form.id">
+                    <input type="hidden" name="isEdit" ng-model="form.isEdit">
+                    <input type="hidden" name="selectedCategory" ng-model="form.selectedCategory">
+                    <input type="hidden" name="selectedType" ng-model="form.selectedType">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputName">Name</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputName" ng-model="form.name" placeholder="{{thingNamePlaceholder}}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputInfo">Info</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputInfo" ng-model="form.info" placeholder="Info">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputSite">{{ 'WORD.Site' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" name="InputSite" id="InputSite" ng-model="form.site" ng-options="option.name for option in sites track by option.id">
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-fill btn-success" type="submit">OK</button>
+            <button class="btn btn-fill btn-danger" type="button" ng-click="cancel()">{{ 'WORD.Cancel' | translate }}</button>
+        </div>
+    </form>
+
+</script>
+
+<!-- DATAPOINT MODAL TEMPLATE -->
+<script type="text/ng-template" id="newDatapointModalTemplate.html">
+    <form class="form-horizontal" role="form" name="form" ng-submit="ok(form)" id="form">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ 'ASSISTANT.Datapoint' | translate }}</h3>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="i in dp.datapoints" ng-click="dp.edit(i)"><strong>{{i.name}}</strong>
+                            <div class="checkbox">
+                                <span class="text-muted">{{i.info}}</span>
+                            </div>
+                            <div class="pull-right action-buttons" ng-click="$event.stopPropagation()">
+                                <a ng-click="dp.delete(i)"><span class="glyphicon glyphicon-trash"></span></a>
+                            </div>
+                    </ul>
+                </div>
+
+                <div class="col-lg-12" style="padding-top: 20px;">
+
+                    <input type="hidden" name="id" ng-model="form.id">
+                    <input type="hidden" name="thingid" ng-model="thing.id">
+                    <input type="hidden" name="isEdit" ng-model="isEdit">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputDpName">Name</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputDpName" ng-model="form.name" placeholder="{{ 'DATAPOINT.NameofDatapoint' | translate }}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputDpInfo">Info</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputDpInfo" ng-model="form.info" placeholder="Info">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputDpIO">{{ 'WORD.IO' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputDpIO" ng-model="form.io" placeholder="{{ 'WORD.IO' | translate }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputDpModel">{{ 'WORD.Model' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputDpModel" ng-model="form.model" placeholder="{{ 'WORD.Model' | translate }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputDpType">{{ 'WORD.Type' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="InputDpType" ng-model="form.type" required>
+                                <option ng-repeat="type in dp.types" value="{{type.id}}">
+                                    {{type.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                          <div class="col-sm-2" ng-repeat="cmd in dp.cmds" ng-drag="true" ng-drag-data="cmd" ng-drag-success="onDragComplete($data,$event)" ng-center-anchor="true">
+{{cmd.name}}
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+           <div ng-drop="true" ng-drop-success="onDropComplete($data,$event)" >
+</div>             </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputSite">{{ 'WORD.Site' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="InputSite" ng-model="form.site" required>
+                                <option ng-repeat="site in sites" value="{{site.id}}">
+                                    {{site.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+        <ul class="list-inline-btn">
+            <li><button class="btn btn-fill btn-info" type="button" ng-click="dp.new()">{{ 'WORD.New' | translate }}</button></li>
+            <li><button class="btn btn-fill btn-success" type="submit">{{ 'WORD.Save' | translate }}</button></li>
+          <li><button class="btn btn-fill btn-danger" type="button" ng-click="cancel()">{{ 'WORD.Cancel' | translate }}</button></li></ul>
+        </div>
+    </form>
+</script>
+
+<!-- CONNECTION MODAL TEMPLATE -->
+<script type="text/ng-template" id="newConnectionModalTemplate.html">
+    <form class="form-horizontal" role="form" name="form" ng-submit="ok(form)" id="form">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ 'ASSISTANT.Connection' | translate }}</h3>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="i in con.connections" ng-click="con.edit(i)"><strong>{{i.name}}</strong>
+                            <div class="checkbox">
+                                <span class="text-muted">{{i.info}}</span>
+                            </div>
+                            <div class="pull-right action-buttons" ng-click="$event.stopPropagation()">
+                                <a ng-click="con.delete(i)"><span class="glyphicon glyphicon-trash"></span></a>
+                            </div>
+                    </ul>
+                </div>
+
+                <div class="col-lg-12">
+
+                    <input type="hidden" name="id" ng-model="form.id">
+                    <input type="hidden" name="isEdit" ng-model="form.isEdit">
+                    <input type="hidden" name="thingid" ng-model="form.thingid">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputName">Name</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputName" ng-model="form.name" placeholder="{{ 'CONNECTION.NameofConnection' | translate }}" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputInfo">Info</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputInfo" ng-model="form.info" placeholder="Info">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputAdaptor">{{ 'WORD.Adaptor' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputAdaptor" ng-model="form.adaptor" placeholder="{{ 'WORD.Adaptor' | translate }}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputUuid">{{ 'WORD.Uuid' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputUuid" ng-model="form.uuid" placeholder="{{ 'WORD.Uuid' | translate }}">
+                        </div>
+                    </div>
+
+                    <!--  <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputAccessToken">{{ 'WORD.AccessToken' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputAccessToken" ng-model="form.accesstoken" placeholder="{{ 'WORD.AccessToken' | translate }}">
+                        </div>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputMod">{{ 'WORD.Mod' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputMod" ng-model="form.mod" placeholder="{{ 'WORD.Mod' | translate }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputHost">{{ 'WORD.Host' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputHost" ng-model="form.host" placeholder="{{ 'WORD.Host' | translate }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputPort">{{ 'WORD.Port' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputPort" ng-model="form.port" placeholder="{{ 'WORD.Port' | translate }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputUsername">{{ 'WORD.Username' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputUsername" ng-model="form.username" placeholder="{{ 'WORD.Username' | translate }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputPassword">{{ 'WORD.Password' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputPassword" ng-model="form.password" placeholder="{{ 'WORD.Password' | translate }}">
+                        </div>
+                    </div>
+
+                   <!-- <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputAgent">{{ 'WORD.Agent' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="InputAgent" ng-model="form.agent">
+                                <option ng-repeat="agent in agents" value="{{agent.id}}" required>
+                                    {{agent.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+-->
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+        <ul class="list-inline-btn">
+            <li><button class="btn btn-fill btn-info" type="button" ng-click="con.new()">{{ 'WORD.New' | translate }}</button></li>
+            <li><button class="btn btn-fill btn-success" type="submit">{{ 'WORD.Save' | translate }}</button></li>
+          <li><button class="btn btn-fill btn-danger" type="button" ng-click="cancel()">{{ 'WORD.Cancel' | translate }}</button></li></ul>
+        </div>
+    </form>
+</script>
+
+
+<!-- AGENT MODAL TEMPLATE -->
+<script type="text/ng-template" id="newAgentModalTemplate.html">
+    <form class="form-horizontal" role="form" name="form" ng-submit="ok(form)" id="form">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ 'ASSISTANT.Agent' | translate }}</h3>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                </div>
+
+                <div class="col-lg-12">
+
+                    <input type="hidden" name="id" ng-model="form.id">
+                    <input type="hidden" name="isEdit" ng-model="form.isEdit">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputName">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputName" ng-model="form.name" placeholder="{{ 'AGENT.NameofAgent' | translate }}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputInfo">Info</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputInfo" ng-model="form.info" placeholder="Info">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputConnection">{{ 'WORD.Connection' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="InputConnection" ng-model="form.connection">
+                                <option ng-repeat="connection in connections" value="{{connection.id}}" required>
+                                    {{connection.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputActive">{{ 'WORD.Active' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <div class="checkbox">
+                                <input ng-model="form.active" id="InputActive" type="checkbox">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-fill btn-success" type="submit">OK</button>
+            <button class="btn btn-fill btn-danger" type="button" ng-click="cancel()">{{ 'WORD.Cancel' | translate }}</button>
+        </div>
+    </form>
+</script>
+
+<!-- WORKFLOW MODAL TEMPLATE -->
+<script type="text/ng-template" id="newWorkflowModalTemplate.html">
+    <form class="form-horizontal" role="form" name="form" ng-submit="ok(form)" id="form">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ 'ASSISTANT.Workflow' | translate }}</h3>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                </div>
+
+                <div class="col-lg-12">
+
+                    <input type="hidden" name="id" ng-model="form.id">
+                    <input type="hidden" name="isEdit" ng-model="form.isEdit">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputWorkflowType">{{ 'WORD.WorkflowType' | translate }}</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="InputWorkflowType" ng-model="form.workflowtype">
+                                <option ng-repeat="type in workflowtypes" value="{{type.id}}">
+                                    {{type.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputName">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputName" ng-model="form.name" placeholder="{{ 'WORKFLOW.NameofWorkflow' | translate }}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="InputInfo">Info</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InputInfo" ng-model="form.info" placeholder="Info">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-fill btn-success" type="submit">OK</button>
+            <button class="btn btn-fill btn-danger" type="button" ng-click="cancel()">{{ 'WORD.Cancel' | translate }}</button>
+        </div>
+    </form>
+</script>
+
+<div class="main col-md-10 col-md-offset-2">
+
+</div>

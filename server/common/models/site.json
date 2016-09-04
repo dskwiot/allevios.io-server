@@ -1,0 +1,42 @@
+{
+  "name": "Site",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id" : "string",
+    "project_id": "string",
+    "depth" : "number",
+    "prev" : "string",
+    "next" : "string",
+    "name": {
+      "type": "string"
+    },
+    "info": {
+      "type": "string"
+    },
+    "sitetype": "string",
+    "geoloc": {
+      "type": "string"
+    },
+    "blueprint": {
+      "type": "string"
+    },
+    "blueprint_x": {
+      "type": "number"
+    },
+    "blueprint_y": {
+      "type": "number"
+    },
+    "blueprint_z": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+  },
+  "acls": [],
+  "methods": {}
+}

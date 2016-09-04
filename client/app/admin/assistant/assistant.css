@@ -1,0 +1,8 @@
+.modal-dialog {
+    padding-top: 50px;
+}
+
+.overlay {
+    background: #ff851b;
+    opacity: .5;
+}

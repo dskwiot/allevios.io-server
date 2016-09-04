@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    RED.nodes.registerType('eibknx', {
+        category: 'allevios',
+        color: '#e3c936',
+        defaults: {
+            name: {
+                value: "EIB/KNX"
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "allevios.png",
+        label: function () {
+            return this.name || "EIB/KNX";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="eibknx">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="eibknx">
+    <p>ALLEVIOS EIB/KNX.</p>
+</script>

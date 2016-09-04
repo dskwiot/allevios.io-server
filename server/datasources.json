@@ -1,0 +1,12 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "AlleviosServer": {
+    "host": "localhost",
+    "database": "al_server",
+    "name": "AlleviosServer",
+    "connector": "mongodb"
+  }
+}

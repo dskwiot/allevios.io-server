@@ -1,0 +1,46 @@
+<div class="container-full alleviosbackground">
+    <div class="site-wrapper">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
+                <div class="inner cover">
+                    <div class="inner cover">
+                        <h1 class="cover-heading">
+                          <img class="img-responsive" style="margin: 0 auto;width: 30%" src="/assets/img/logo.png"></img></h1>
+                        <h3>{{ 'APP_SUBTITLE2' | translate }}</h3>
+                        <p class="lead">
+                            <a href="#" ng-click="showLogin()" class="btn btn-fill btn-lg btn-success">{{ 'WORD.Login' | translate }}</a>
+                        </p>
+                        <p class="lead">
+                            <a href="#" ng-click="showSignup()">{{ 'WELCOME.Register' | translate }}</a>
+                        </p>
+                    </div>
+                </div>
+                <div ng-include="'components/social/social.html'" style="padding-top: 40px;"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<script>
+
+var w, h;
+
+function getViewPortSize() {
+w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+};
+
+$(window).ready(function() {
+  getViewPortSize();
+        $('.site-wrapper').css('min-height', h + "px");
+    });
+
+    $(window).resize(function() {
+      getViewPortSize();
+        $('.site-wrapper').css('min-height', h + "px");
+    });
+
+</script>

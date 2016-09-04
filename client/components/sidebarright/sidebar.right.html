@@ -1,0 +1,51 @@
+<div class="col-xs-7 col-sm-3 col-md-3 sidebar sidebar-right sidebar-animate" ng-controller="SidebarRightCtrl">
+    <ul class="nav navbar-stacked">
+        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+            <a ng-href="{{item.link}}">{{item.title}}</a>
+        </li>
+
+        <!--  <li ng-show="isLoggedIn()" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ 'WORD.Management' | translate }} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">{{ 'WORD.Users' | translate }}</a>
+                </li>
+                <li ng-show="isAdmin()" ng-class="{active: isActive('/admin/client')}"><a href="/admin/client">{{ 'WORD.Clients' | translate }}</a>
+                </li>
+                <li ng-show="isAdmin()" ng-class="{active: isActive('/admin/project')}"><a href="/admin/project">{{ 'WORD.Projects' | translate }}</a>
+                </li>
+                <li ng-show="isAdmin()" ng-class="{active: isActive('/admin/device')}"><a href="/admin/device">{{ 'WORD.Devices' | translate }}</a>
+                </li>
+                <li ng-show="isAdmin()" ng-class="{active: isActive('/admin/driver')}"><a href="/admin/driver">{{ 'WORD.Driver' | translate }}</a>
+                </li>
+                <li ng-show="isAdmin()" ng-class="{active: isActive('/admin/connection')}"><a href="/admin/connection">{{ 'WORD.Connections' | translate }}</a>
+                </li>
+                <li ng-show="isAdmin()" ng-class="{active: isActive('/admin/workflow')}"><a href="/admin/workflow">{{ 'WORD.Workflows' | translate }}</a>
+                </li>
+            </ul>
+        </li> -->
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/#/signup">{{ 'WORD.Signup' | translate }}</a>
+        </li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/#/login">{{ 'WORD.Login' | translate}}</a>
+        </li>
+        <li ng-show="isLoggedIn()">
+            <p class="navbar-text">{{ 'WORD.Hello' | translate }} {{ getCurrentUser().name }}</p>
+        </li>
+        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/#/settings"><span class="glyphicon glyphicon-cog"></span></a>
+        </li>
+        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">{{ 'WORD.Logout' | translate}}</a>
+        </li>
+
+        <li class="dropdown" ng-controller="LanguageCtrl">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ 'WORD.Language' | translate }} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a ng-click="changeLanguage('de_DE')"><h4><span class="flag-icon flag-icon-de"></span><span> {{ 'WORD.German' | translate }}</span></h4></a>
+                </li>
+                <li>
+                    <a ng-click="changeLanguage('en_US')"><h4><span class="flag-icon flag-icon-us"></span><span> {{ 'WORD.English' | translate }}</span></h4></a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</div>

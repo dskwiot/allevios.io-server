@@ -1,0 +1,83 @@
+<ng-include src="'/app/admin/assistant/assistant.html'">
+
+</ng-include>
+
+<script type="text/ng-template" id="customTemplate.html">
+    <a>
+        <span bind-html-unsafe="match.model.name | typeaheadHighlight:query"></span>
+    </a>
+</script>
+
+<div class="main col-md-10 col-md-offset-2">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li>
+                {{ 'WORD.Management' | translate }}
+            </li>
+            <li class="active">{{ 'WORD.Agents' | translate }}</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-sm-3 col-xs-3">
+            <h1 class="page-header">{{ 'WORD.Agents' | translate }}</h1>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-9">
+            <h2>
+            <input class="pull-right" type="text" ng-model="filter" placeholder="{{ 'WORD.Filter' | translate }}" typeahead="type as type.name for type in agents | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control">
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- <div class="col-lg-12">
+            <ul class="list-group">
+                <li ng-click="edit(i)" class="list-group-item" ng-repeat="i in agents">
+                    <strong>{{i.name}}</strong>
+                    <div class="checkbox">
+                        <span class="text-muted">{{i.info}}</span>
+                    </div>
+                    <div class="pull-right action-buttons" ng-click="$event.stopPropagation()">
+                       
+                        <a ng-click="delete(i)"><span class="glyphicon glyphicon-trash"></span></a>
+                    </div>
+                </li>
+            </ul>
+        </div> -->
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-click="add()">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3 class="light">{{ 'ASSISTANT.Agent' | translate }}</h3>
+                    <p>{{ 'WORD.Add' | translate }}</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-home"></i>
+                </div>
+
+                <div class="inner">
+                    <span> </span>
+                    <span> </span>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-repeat="i in agents" ng-click="edit(i)">
+            <div class="small-box bg-blue">
+                <div class="inner">
+                    <h3 class="light">{{i.name}}</h3>
+                    <p>{{ i.info }}</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-home"></i>
+                </div>
+                <div class="inner" ng-click="$event.stopPropagation()">
+                    <button class="btn-group btn btn-danger" ng-click="delete(i)"><i class="glyphicon glyphicon-trash"></i> {{ 'WORD.Delete' | translate }}</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

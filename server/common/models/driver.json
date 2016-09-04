@@ -1,0 +1,24 @@
+{
+  "name": "Driver",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id" : "string",
+    "name": {
+      "type": "string"
+    },
+    "info": {
+      "type": "string"
+    },
+    "framework": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

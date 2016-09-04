@@ -1,0 +1,48 @@
+<div class="sidebar" data-color="blue" data-image="assets/img/sidebar-1.jpg" ng-controller="SidebarCtrl">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a ui-sref="main.dashboard" class="simple-text">
+                <img src="assets/img/logo.png" width="40px">
+            </a>
+        </div>
+
+        <ul class="nav">
+            <li ng-class="{active: isActive('main.dashboard')}">
+                <a ui-sref="main.dashboard">
+                    <i class="pe-7s-home"></i>
+                </a>
+            </li>
+
+            <hr style="opacity: .2">
+
+            <li ng-class="{active: isActive('main.thing')}">
+                <a ui-sref="main.thing">
+                    <i class="pe-7s-box2"></i>
+                </a>
+            </li>
+            <li ng-class="{active: isActive('main.workflow')}">
+                <a ui-sref="main.workflow">
+                    <i class="pe-7s-network"></i>
+                </a>
+            </li>
+
+            <hr style="opacity: .2">
+
+            <li ng-class="{active: isActive('main.site')}">
+                <a ui-sref="main.site">
+                    <i class="pe-7s-map-2"></i>
+                </a>
+            </li>
+
+            <hr style="opacity: .2">
+
+            <li ng-class="{active: isActive('admin.settings')}">
+                <a ui-sref="main.settings">
+                    <i class="pe-7s-config"></i>
+                </a>
+            </li>
+
+
+        </ul>
+    </div>
+</div>
