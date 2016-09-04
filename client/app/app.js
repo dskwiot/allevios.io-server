@@ -39,8 +39,8 @@ angular.module('alleviosServerApp', [
       // German Language
       $translateProvider.translations('de_DE', {
         DASHBOARD_HEADLINE: 'Übersicht',
-        APP_MAIN: 'ALLEVIOS',
-        APP_TITLE: 'ALLEVIOS',
+        APP_MAIN: 'allevios.io',
+        APP_TITLE: 'allevios.io',
         APP_SUBTITLE: 'ADMIN',
         APP_SUBTITLE2: 'Socialized Internet of Things',
         APP_USER_SUBTITLE: 'HOME',
@@ -50,9 +50,9 @@ angular.module('alleviosServerApp', [
         DASHBOARD: {
           WorldConnected: 'Verbundene Things weltweit',
           SocialInfluence: 'Sozialer Einfluss',
-          Chat: 'Mit ALLEVIOS Support chatten',
+          Chat: 'Mit allevios.io Support chatten',
           TypeMessage: 'Ihre Nachricht...',
-          Email: 'Email an ALLEVIOS',
+          Email: 'Email an allevios.io',
         },
         WELCOME: {
           Register: 'Jetzt kostenlos registrieren',
@@ -251,11 +251,10 @@ angular.module('alleviosServerApp', [
       // English Language
       $translateProvider.translations('en_US', {
         DASHBOARD_HEADLINE: 'Dashboard',
-        APP_MAIN: 'ALLEVIOS',
-        APP_TITLE: 'ALLEVIOS',
+        APP_MAIN: 'allevios.io',
+        APP_TITLE: 'allevios.io',
         APP_SUBTITLE: 'ADMIN',
         APP_SUBTITLE2: 'Socialized Internet of Things',
-        APP_USER_SUBTITLE: 'HOME',
         APP_USER_SUBTITLE: 'HOME',
         APP_COPYRIGHT_SUB: 'ALLEVIOS is a registered trademark of Daniel Schlager',
         APP_LOVE: 'Made with',
@@ -263,9 +262,9 @@ angular.module('alleviosServerApp', [
         DASHBOARD: {
           WorldConnected: 'Worldwide connected Things',
           SocialInfluence: 'Social Influence',
-          Chat: 'Chat with ALLEVIOS Support',
+          Chat: 'Chat with allevios.io Support',
           TypeMessage: 'Type message...',
-          Email: 'Email to ALLEVIOS',
+          Email: 'Email to allevios.io',
         },
         WELCOME: {
           Register: 'Jetzt kostenlos registrieren',
@@ -464,8 +463,8 @@ angular.module('alleviosServerApp', [
       // Spanish Language
       $translateProvider.translations('es_ES', {
         DASHBOARD_HEADLINE: 'Tablero',
-        APP_MAIN: 'ALLEVIOS // Connecting Things',
-        APP_TITLE: 'ALLEVIOS',
+        APP_MAIN: 'allevios.io',
+        APP_TITLE: 'allevios.io',
         APP_SUBTITLE: 'ADMIN',
         APP_USER_SUBTITLE: 'HOME',
         APP_COPYRIGHT_SUB: 'ALLEVIOS es una marca comercial registrada de Daniel Schlager.',
@@ -473,9 +472,9 @@ angular.module('alleviosServerApp', [
         APP_LOVE2: 'en Salzburgo / Austria.',
         DASHBOARD: {
           WorldConnected: 'Los dispositivos conectados en todo el mundo',
-          Chat: 'Chatea con Soporte ALLEVIOS',
+          Chat: 'Chatea con Soporte allevios.io',
           TypeMessage: 'Tipo de mensaje ...',
-          Email: 'Correo electrónico a ALLEVIOS',
+          Email: 'Correo electrónico a allevios.io',
         },
         WORD: {
           Home: 'Hogar',

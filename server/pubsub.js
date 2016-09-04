@@ -28,12 +28,12 @@ module.exports = {
       var method         = options.method;
       var data           = options.data;
       var modelId        = options.modelId;
+      var name;
       if (method === 'POST') {
-        //console.log('Posting new data');
-        var name = '/' + collectionName + '/' + method;
+        name = '/' + collectionName + '/' + method;
         socket.emit(name, data);
       } else {
-        var name = '/' + collectionName + '/' + modelId + '/' + method;
+        name = '/' + collectionName + '/' + modelId + '/' + method;
         socket.emit(name, data);
       }
     }else {
@@ -44,7 +44,7 @@ module.exports = {
   isEmpty: function(obj) {
     var hasOwnProperty = Object.prototype.hasOwnProperty;
     // null and undefined are "empty"
-    if (obj == null) return true;
+    if (obj === null) return true;
     // Assume if it has a length property with a non-zero value
     // that that property is correct.
     if (obj.length > 0)    return false;

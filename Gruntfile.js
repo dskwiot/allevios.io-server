@@ -29,9 +29,6 @@ module.exports = function (grunt) {
         shell: {
             options: {
                 stderr: false
-            },
-            doxx: {
-                command: './doxx.sh'
             }
         },
         // Project settings
@@ -138,14 +135,14 @@ module.exports = function (grunt) {
                 src: ['server/**/*.spec.js']
             },
             all: [
-        '<%= yeoman.client %>/{app,components}/**/*.js',
+        '<%= yeoman.client %>/{app}/**/*.js',
         '!<%= yeoman.client %>/{app,components}/**/*.spec.js',
         '!<%= yeoman.client %>/{app,components}/**/*.mock.js'
       ],
             test: {
                 src: [
-          '<%= yeoman.client %>/{app,components}/**/*.spec.js',
-          '<%= yeoman.client %>/{app,components}/**/*.mock.js'
+          '!<%= yeoman.client %>/{app,components}/**/*.spec.js',
+          '!<%= yeoman.client %>/{app,components}/**/*.mock.js'
         ]
             }
         },
@@ -602,7 +599,6 @@ module.exports = function (grunt) {
     'ngAnnotate',
     'copy:dist',
     'cdnify',
-    'cssmin',
     'uglify',
     'rev',
     'usemin'
@@ -614,5 +610,4 @@ module.exports = function (grunt) {
     'build'
   ]);
 
-    grunt.registerTask('doxx', ['shell:doxx']);
 };

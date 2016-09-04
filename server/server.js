@@ -71,7 +71,7 @@ const pubsub = require('./pubsub'); // todo: move to module
 const flash = require('express-flash');
 
 // attempt to build the providers/passport config
-let config = {};
+var config = {};
 try {
   config = require('./providers.json');
 } catch (err) {
@@ -224,7 +224,7 @@ app.start = function start(httpOnly) {
   if (typeof httpOnly === 'undefined') {
     httpOnly = process.env.HTTP;
   }
-  let server = null;
+  var server = null;
   if (!httpOnly) {
     server = https.createServer(httpsOptions, app);
   } else {

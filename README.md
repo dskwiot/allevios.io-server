@@ -48,7 +48,7 @@ $ git clone https://github.com/allevios/allevios.io-server.gi allevios.io-server
 2. Change to the allevios.io-server folder and install additional dependencies with:
 
 ```sh
-$ npm install -g bower grunt
+$ npm install -g bower grunt grunt-cli
 $ npm install; bower install
 ```
 
