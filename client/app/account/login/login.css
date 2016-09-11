@@ -125,12 +125,12 @@ a:hover {
     height: auto;
 }
 .login-form-1 .form-control::-webkit-input-placeholder {
-    color: #999999;
+    color: #595959;
 }
 .login-form-1 .form-control:-moz-placeholder,
 .login-form-1 .form-control::-moz-placeholder,
 .login-form-1 .form-control:-ms-input-placeholder {
-    color: #999999;
+    color: #595959;
 }
 .login-form-1 .form-group {
     margin-bottom: 0;
@@ -426,15 +426,15 @@ img.logo {
     padding-right: 30px;
 }
 input[type="name"] {
-    color: #dba71b;
+    color: #db8521;
     background-color: #c7c7c7;
 }
 input[type="email"] {
-    color: #dba71b;
+    color: #DB8521;
     background-color: #c7c7c7;
 }
 input[type="password"] {
-    color: #dba71b;
+    color: #DB8521;
     background-color: #c7c7c7;
 }
 .opaque {
@@ -453,4 +453,8 @@ login .form-control {
 }
 login .form-control:focus {
     border-style: none;
+}
+
+.login {
+  background-color: #efefef;
 }

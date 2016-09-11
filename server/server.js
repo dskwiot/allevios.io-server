@@ -60,6 +60,8 @@ const fs = require('fs');
 
 const pubsub = require('./pubsub'); // todo: move to module
 
+const figlet = require('figlet');
+
 /**
  * Flash messages for passport
  *
@@ -220,7 +222,6 @@ app.get('/auth/logout', function logout(req, res) {
 /* ################### START ###################### */
 
 app.start = function start(httpOnly) {
-
   if (typeof httpOnly === 'undefined') {
     httpOnly = process.env.HTTP;
   }
@@ -233,11 +234,13 @@ app.start = function start(httpOnly) {
   server.listen(app.get('port'), function listen() {
     const baseUrl = (httpOnly ? 'http://' : 'https://') + app.get('host') + ':' + app.get('port');
     app.emit('started', baseUrl);
+
     console.log('LoopBack server listening @ %s%s', baseUrl, '/');
     if (app.get('loopback-component-explorer')) {
       const explorerPath = app.get('loopback-component-explorer').mountPath;
       console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
     }
+
   });
   return server;
 
@@ -245,3 +248,19 @@ app.start = function start(httpOnly) {
 
 // Start the NodeRed runtime
 RED.start();
+
+app.showWelcome = function() {
+  // show welcome logo
+  figlet('allevios.io', function(err, data) {
+    if (err) {
+      console.log('Something went wrong...');
+      console.dir(err);
+      return;
+    }
+    console.log(data)
+    console.log('   https://github.com/allevios');
+    console.log('   \\-- https://www.allevios.io');
+  });
+};
+
+app.showWelcome();

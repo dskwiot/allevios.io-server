@@ -1,4 +1,4 @@
-<div id="login" class="row text-center">
+<div id="login" class="row text-center login">
     <div class="col-lg-12" style="padding-top: 20px;">
         <img class="logo" style="max-width: 150px;" src="assets/images/logo.png">
     </div>
@@ -7,13 +7,16 @@
             <form role="form" name="form" ng-submit="submit(form)" novalidate>
 
                 <div class="btn-group">
+                  <label for="email">{{ 'WORD.Email' | translate }}</label>
                     <div class="inner-addon left-addon" style="border-style: none;">
                         <i class="glyphicon glyphicon-user"></i>
-                        <input class="form-control opaque" placeholder="{{ 'WORD.Email' | translate }}" name="email" type="email" ng-model="user.email" required>
+                        <input class="form-control opaque" placeholder="{{ 'WORD.Email' | translate }}" id="email" name="email" type="email" ng-model="user.email" required>
                     </div>
+                  <p></p>
+                  <label for="password">{{ 'WORD.Password' | translate }}</label>
                     <div class="inner-addon left-addon">
                         <i class="glyphicon glyphicon-user"></i>
-                        <input type="password" class="form-control" name="password" type="password" value="" ng-model="user.password" placeholder="{{ 'WORD.Password' | translate }}" required>
+                        <input type="password" class="form-control" name="password" type="password" id="password" value="" ng-model="user.password" placeholder="{{ 'WORD.Password' | translate }}" required>
                     </div>
                 </div>
                 </br>
@@ -48,7 +51,7 @@
     </div>
 
     <div class="col-lg-12">
-        <p>{{ 'LOGIN.Forgotpassword' | translate }} <a href="" ng-click="showForgotPassword()">{{ 'WORD.clickhere' | translate }}</a>
+        <p> <a href="" ng-click="showForgotPassword()">{{ 'LOGIN.Forgotpassword' | translate }}</a>
         </p>
     </div>
 </div>

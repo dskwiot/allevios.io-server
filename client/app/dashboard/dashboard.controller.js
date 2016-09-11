@@ -400,7 +400,7 @@ angular.module('alleviosServerApp')
 
       $.notify({
         icon: 'pe-7s-smile',
-        message: 'Welcome to <b>ALLEVIOS</b> - easy to use IoT.',
+        message: 'Welcome to <b>allevios.io</b> - easy to use Socialized Open Source IoT.',
 
       }, {
         type: 'info',
